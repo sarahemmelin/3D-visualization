@@ -32,7 +32,6 @@ public class InflationTrigger : MonoBehaviour
         for (int i = 0; i < starCount; i++)
         {
             Vector3 spawnOffset = Random.insideUnitSphere * 2.0f;
-            // Use transform.position to ensure stars center on this manager
             GameObject star = Instantiate(starPrefab, transform.position + spawnOffset, Quaternion.identity);
 
             Rigidbody rb = star.GetComponent<Rigidbody>();
@@ -41,6 +40,10 @@ public class InflationTrigger : MonoBehaviour
                 Vector3 direction = spawnOffset.normalized;
                 rb.AddForce(direction * inflationForce, ForceMode.Impulse);
             }
+
+            // --- THE ANTI-FREEZE FIX ---
+            // Every 100 stars, wait for the next frame so the PC doesn't lock up
+            if (i % 100 == 0) yield return null;
         }
 
         while (flashGroup.alpha > 0)
