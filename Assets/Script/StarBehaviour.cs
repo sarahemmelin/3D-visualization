@@ -46,17 +46,30 @@ public class StarBehavior : MonoBehaviour
             col.enabled = false;
         }
 
-        // 2. VISUAL DEHYDRATION (Swap to Quad + Unique Twinkle Color)
+        // 2. VISUAL DEHYDRATION
         if (billboardQuad != null)
         {
-            // We create the unique mesh instance here so the StarBatcher can 'harvest' its color
             Mesh meshInstance = Instantiate(billboardQuad);
             Color[] colors = new Color[meshInstance.vertexCount];
+
+            // Twinkle offset goes in Alpha
             float randomOffset = Random.value * 100f;
+            // Random scale before batching
+            float size = Random.Range(0.5f, 2.0f);
+            transform.localScale = Vector3.one * size;
+
+            // Generate subtle tints (mostly 1.0, dipping slightly for color)
+            // Red star: (1.0, 0.8, 0.8) | Blue star: (0.8, 0.8, 1.0)
+            //float r = Random.Range(0.85f, 1.0f);
+            //float g = Random.Range(0.85f, 1.0f);
+            //float b = Random.Range(0.85f, 1.0f);
+            float r = Random.Range(0.2f, 1.0f);
+            float g = Random.Range(0.2f, 1.0f);
+            float b = Random.Range(0.2f, 1.0f);
 
             for (int i = 0; i < colors.Length; i++)
             {
-                colors[i] = new Color(randomOffset, 0, 0, 1);
+                colors[i] = new Color(r, g, b, randomOffset);
             }
 
             meshInstance.colors = colors;
@@ -64,8 +77,6 @@ public class StarBehavior : MonoBehaviour
 
             MeshRenderer mr = GetComponent<MeshRenderer>();
             mr.material = backgroundStarMaterial;
-
-            // Kill shadows immediately
             mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             mr.receiveShadows = false;
         }
@@ -74,11 +85,9 @@ public class StarBehavior : MonoBehaviour
         if (batcher != null)
         {
             transform.SetParent(batcher.transform, true);
-
             batcher.RegisterStar();
         }
 
-        // 4. CPU CLEANUP
         this.enabled = false;
     }
 }
