@@ -5087,6 +5087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7ebea749e0e60c4583333cfc0f885df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarBatcher
+  batchThreshold: 100
 --- !u!1 &299966452
 GameObject:
   m_ObjectHideFlags: 0
