@@ -24,11 +24,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _LeftBottomFront:
-        m_Texture: {fileID: 2800000, guid: 533a1d2cd8548c341bbd50bb62c5385d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 83518dc4899bbb64b9a777985f3ded63, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RightTopBack:
-        m_Texture: {fileID: 2800000, guid: 533a1d2cd8548c341bbd50bb62c5385d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6d8f4415f8618d341b786205fd091b14, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -45,9 +45,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Ambient_Occlusion: 0
+    - _Ambient_Occlusion: 3.43
     - _Baked_GI: 0
-    - _Color_Absorption: 0
+    - _Color_Absorption: 0.35
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors: []
