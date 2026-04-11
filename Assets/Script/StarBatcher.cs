@@ -6,7 +6,6 @@ public class StarBatcher : MonoBehaviour
     [SerializeField] private int batchThreshold = 100;
     private int currentWaitingStars = 0;
 
-    // We keep track of the stars we've already combined
     private List<CombineInstance> masterCombineList = new List<CombineInstance>();
 
     public void RegisterStar()
@@ -31,7 +30,6 @@ public class StarBatcher : MonoBehaviour
         // Skip the container itself (index 0)
         if (meshFilters.Length <= 1) return;
 
-        // 1. Add NEW stars to our master list
         for (int i = 1; i < meshFilters.Length; i++)
         {
             CombineInstance ci = new CombineInstance();
@@ -60,7 +58,7 @@ public class StarBatcher : MonoBehaviour
         mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         mr.receiveShadows = false;
 
-        // 4. Clean up the GameObjects (the mesh data is now safe in our List)
+        // 4. Clean up the GameObjects
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
