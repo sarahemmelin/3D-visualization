@@ -155,4 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StarBehavior
   backgroundStarMaterial: {fileID: 2100000, guid: fb6e9dbb5719b1e42911b61fe6cacc08, type: 2}
   billboardQuad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
-  backgroundStarsContainer: {fileID: 0}
+  innerRadius: 100
+  outerRadius: 245
+  startScale: 1
+  minTravelScale: 0.4

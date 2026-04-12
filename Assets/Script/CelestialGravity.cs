@@ -17,7 +17,9 @@ public class CelestialGravity : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, captureRadius);
         foreach (Collider hit in colliders)
         {
-            if (hit.gameObject.name.Contains("Shard") || hit.gameObject.name.Contains("Melty"))
+            if (hit.gameObject.name.Contains("Shard") ||
+                hit.gameObject.name.Contains("Melty") ||
+                hit.gameObject.name.Contains("Main_Star"))
             {
                 Rigidbody rb = hit.GetComponent<Rigidbody>();
                 if (rb != null) ApplyPull(rb);
@@ -53,19 +55,13 @@ public class CelestialGravity : MonoBehaviour
 
                 if (dist < captureRadius && dist > 0.1f)
                 {
-                    // Damping:
                     particles[i].velocity *= damping;
 
                     Vector3 gravityPull = dir.normalized * (gravityIntensity / dist) * Time.fixedDeltaTime;
-
-                    Vector3 swirl = Vector3.Cross(dir.normalized, Vector3.up) * (gravityIntensity * swirlStrength / dist) * Time.fixedDeltaTime;
-
+                    Vector3 swirl = Vector3.Cross(Vector3.up, dir.normalized) * (gravityIntensity * swirlStrength / dist) * Time.fixedDeltaTime;
                     Vector3 totalForce = gravityPull + swirl;
 
-                    if (isLocal)
-                    {
-                        totalForce = ps.transform.InverseTransformDirection(totalForce);
-                    }
+                    if (isLocal) totalForce = ps.transform.InverseTransformDirection(totalForce);
 
                     particles[i].velocity += totalForce;
                 }
@@ -81,13 +77,11 @@ public class CelestialGravity : MonoBehaviour
 
         if (dist < captureRadius && dist > 1f)
         {
-            // Damping
             rb.linearDamping = (1f - damping) * 50f;
 
             float force = gravityIntensity / dist;
             rb.AddForce(direction.normalized * force);
 
-            // Swirl for shards
             Vector3 swirl = Vector3.Cross(Vector3.up, direction.normalized);
             rb.AddForce(swirl * (force * swirlStrength));
         }

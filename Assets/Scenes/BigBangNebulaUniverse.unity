@@ -4968,6 +4968,7 @@ GameObject:
   - component: {fileID: 49677772}
   - component: {fileID: 49677775}
   - component: {fileID: 49677776}
+  - component: {fileID: 49677777}
   m_Layer: 0
   m_Name: Big_Star
   m_TagString: Untagged
@@ -5062,7 +5063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CelestialGravity
   gravityIntensity: 100
-  captureRadius: 33.4
+  captureRadius: 54.3
   swirlStrength: 0.9
   damping: 0.988
 --- !u!135 &49677776
@@ -5086,6 +5087,26 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.53
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &49677777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49677771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90c1aece514857544a658196df1b6ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarFeeder
+  mainStar: {fileID: 1230812210}
+  detectionRadius: 25
+  surfaceRadius: 8
+  baseIntensity: 1
+  maxPulseIntensity: 0.79
+  pulseSpeedMultiplier: 0.33
+  starAgitationStrength: 0.05
+  agitationDecaySpeed: 1.5
 --- !u!1 &278788980
 GameObject:
   m_ObjectHideFlags: 0
@@ -5435,6 +5456,66 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1001 &369989019
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: aaf3111572c41704ea0d459262933b4b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.08
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aaf3111572c41704ea0d459262933b4b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -10.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aaf3111572c41704ea0d459262933b4b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 75.28
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aaf3111572c41704ea0d459262933b4b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aaf3111572c41704ea0d459262933b4b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aaf3111572c41704ea0d459262933b4b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aaf3111572c41704ea0d459262933b4b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aaf3111572c41704ea0d459262933b4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aaf3111572c41704ea0d459262933b4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: aaf3111572c41704ea0d459262933b4b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aaf3111572c41704ea0d459262933b4b, type: 3}
+      propertyPath: m_Name
+      value: Humea
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: aaf3111572c41704ea0d459262933b4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 706163032}
+  m_SourcePrefab: {fileID: 100100000, guid: aaf3111572c41704ea0d459262933b4b, type: 3}
 --- !u!1 &409403733
 GameObject:
   m_ObjectHideFlags: 0
@@ -39787,6 +39868,26 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &706163031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: aaf3111572c41704ea0d459262933b4b, type: 3}
+  m_PrefabInstance: {fileID: 369989019}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &706163032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706163031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78490f737478c014096b5f29815f6d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SimpleOrbit
+  target: {fileID: 49677774}
+  orbitSpeed: 14.2
+  orbitAxis: {x: 0, y: -1, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -40053,7 +40154,7 @@ MonoBehaviour:
     m_NumColorKeys: 7
     m_NumAlphaKeys: 2
   flashGroup: {fileID: 278788981}
-  fadeSpeed: 0.78
+  fadeSpeed: 0.52
 --- !u!4 &972637817
 Transform:
   m_ObjectHideFlags: 0
@@ -40657,7 +40758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4974fd2891f45114daf90317f7e9c3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarWaypoint
-  speedToNextPoint: 13.87
+  speedToNextPoint: 10
 --- !u!1 &1192155668
 GameObject:
   m_ObjectHideFlags: 0
@@ -40763,6 +40864,7 @@ GameObject:
   - component: {fileID: 1230812214}
   - component: {fileID: 1230812213}
   - component: {fileID: 1230812211}
+  - component: {fileID: 1230812215}
   m_Layer: 0
   m_Name: Main_Star
   m_TagString: Untagged
@@ -41413,6 +41515,19 @@ ParticleSystemForceField:
         m_RotationOrder: 4
     m_MultiplyDragByParticleSize: 1
     m_MultiplyDragByParticleVelocity: 1
+--- !u!114 &1230812215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230812206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5502267d4732c79498f6370c20f40e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StarRelease
+  pathingScript: {fileID: 0}
 --- !u!1 &1233765493
 GameObject:
   m_ObjectHideFlags: 0
@@ -51258,7 +51373,7 @@ Transform:
   m_GameObject: {fileID: 1467994501}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 48.6, y: -13.1, z: 96.7}
+  m_LocalPosition: {x: 38.6, y: -13.1, z: 102}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51276,7 +51391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4974fd2891f45114daf90317f7e9c3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StarWaypoint
-  speedToNextPoint: 25
+  speedToNextPoint: 10
 --- !u!1 &1493796622
 GameObject:
   m_ObjectHideFlags: 0
@@ -61120,7 +61235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleOrbit
   target: {fileID: 49677774}
-  orbitSpeed: 20
+  orbitSpeed: 21
   orbitAxis: {x: 0, y: -1, z: 0.2}
 --- !u!1 &1741323950
 GameObject:
@@ -71183,3 +71298,4 @@ SceneRoots:
   - {fileID: 882264974}
   - {fileID: 49677774}
   - {fileID: 985058055}
+  - {fileID: 369989019}
