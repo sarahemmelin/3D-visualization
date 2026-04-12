@@ -27,7 +27,6 @@ public class StarBatcher : MonoBehaviour
 
         MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
 
-        // Skip the container itself (index 0)
         if (meshFilters.Length <= 1) return;
 
         for (int i = 1; i < meshFilters.Length; i++)
@@ -36,12 +35,9 @@ public class StarBatcher : MonoBehaviour
             ci.mesh = meshFilters[i].sharedMesh;
             ci.transform = meshFilters[i].transform.localToWorldMatrix;
             masterCombineList.Add(ci);
-
-            // Disable the individual star immediately
             meshFilters[i].gameObject.SetActive(false);
         }
 
-        // 2. Create the new "Total" mesh
         MeshFilter mf = GetComponent<MeshFilter>();
         if (mf == null) mf = gameObject.AddComponent<MeshFilter>();
 
@@ -51,14 +47,12 @@ public class StarBatcher : MonoBehaviour
         combinedMesh.RecalculateBounds();
         mf.mesh = combinedMesh;
 
-        // 3. Setup Renderer
         MeshRenderer mr = GetComponent<MeshRenderer>();
         if (mr == null) mr = gameObject.AddComponent<MeshRenderer>();
         mr.material = meshFilters[1].GetComponent<MeshRenderer>().sharedMaterial;
         mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         mr.receiveShadows = false;
 
-        // 4. Clean up the GameObjects
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);

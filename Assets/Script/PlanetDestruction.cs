@@ -12,7 +12,9 @@ public class PlanetDestruction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.Contains("Star"))
+        // Changed from "Star" to "Main_Star" 
+        // This stops it from exploding just because the Big_Star is near.
+        if (other.gameObject.name.Contains("Main_Star"))
         {
             Debug.Log("Impact detected! BLOWN THE FUCK UP by: " + other.gameObject.name);
             Explode();
@@ -26,7 +28,6 @@ public class PlanetDestruction : MonoBehaviour
             ParticleSystem effect = Instantiate(explosionParticles, transform.position, Quaternion.identity);
             effect.Play();
 
-            //spaghetti here
             GameObject bigStar = GameObject.Find("Big_Star");
             if (bigStar != null)
             {
@@ -34,7 +35,7 @@ public class PlanetDestruction : MonoBehaviour
                 if (gravity != null) gravity.RegisterShrapnel(effect);
             }
 
-            Destroy(effect.gameObject, 200f); 
+            Destroy(effect.gameObject, 200f);
         }
 
         if (wholePlanet != null)
