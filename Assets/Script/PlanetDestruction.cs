@@ -12,8 +12,6 @@ public class PlanetDestruction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Changed from "Star" to "Main_Star" 
-        // This stops it from exploding just because the Big_Star is near.
         if (other.gameObject.name.Contains("Main_Star"))
         {
             Debug.Log("Impact detected! BLOWN THE FUCK UP by: " + other.gameObject.name);

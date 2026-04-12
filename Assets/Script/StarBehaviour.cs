@@ -46,7 +46,7 @@ public class StarBehavior : MonoBehaviour
                 TransitionToBackground();
                 yield break;
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
         }
     }
 
@@ -62,7 +62,7 @@ public class StarBehavior : MonoBehaviour
 
         if (billboardQuad != null)
         {
-            float backgroundSize = Random.Range(0.5f, 2.0f);
+            float backgroundSize = Random.Range(0.3f, 1.0f);
             transform.localScale = Vector3.one * backgroundSize;
 
             Mesh meshInstance = Instantiate(billboardQuad);
@@ -86,6 +86,15 @@ public class StarBehavior : MonoBehaviour
 
         if (batcher != null)
         {
+            transform.LookAt(Vector3.zero);
+            transform.Rotate(0, 180, 0);
+            transform.Rotate(0, 0, Random.Range(0f, 360f));
+
+            float baseSize = Random.Range(0.2f, 0.6f);
+            float skewX = Random.Range(0.5f, 2.0f);
+            float skewY = Random.Range(0.5f, 2.0f);
+            transform.localScale = new Vector3(skewX * baseSize, skewY * baseSize, 1f);
+
             transform.SetParent(batcher.transform, true);
             batcher.RegisterStar();
         }
