@@ -7,10 +7,6 @@ public class StarTravel : MonoBehaviour
     public float burstSpeed = 50f;
     public bool isMoving = false;
 
-    [Header("Wobble Settings")]
-    public float wobbleSpeed = 2f;
-    public float wobbleAmount = 5f;
-
     [Header("Movement Polish")]
     public float acceleration = 1f;
     public float turnSpeed = 1f;
@@ -21,6 +17,8 @@ public class StarTravel : MonoBehaviour
     private bool hasBurst = false;
 
     private int currentPointIndex = 0;
+    public int CurrentPointIndex => currentPointIndex;
+    public bool IsInFinalStretch => currentPointIndex >= 4; // True once it leaves Waypoint 4 for 5
 
     void Start()
     {
@@ -66,9 +64,6 @@ public class StarTravel : MonoBehaviour
 
         currentVelocity = Mathf.Lerp(currentVelocity, targetSpeed, Time.deltaTime * acceleration);
         transform.position += transform.forward * currentVelocity * Time.deltaTime;
-
-        float yOffset = Mathf.Sin(Time.time * wobbleSpeed) * wobbleAmount;
-        transform.position += Vector3.up * yOffset * Time.deltaTime;
 
         if (Vector3.Distance(transform.position, targetPos) < 2f)
         {
