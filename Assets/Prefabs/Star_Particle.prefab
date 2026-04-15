@@ -157,5 +157,4 @@ MonoBehaviour:
   billboardQuad: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
   innerRadius: 100
   outerRadius: 245
-  startScale: 1
-  minTravelScale: 0.4
+  minTravelScale: 0.5

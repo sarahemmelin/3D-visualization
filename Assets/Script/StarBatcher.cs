@@ -33,6 +33,7 @@ public class StarBatcher : MonoBehaviour
         {
             CombineInstance ci = new CombineInstance();
             ci.mesh = meshFilters[i].sharedMesh;
+
             ci.transform = meshFilters[i].transform.localToWorldMatrix;
             masterCombineList.Add(ci);
             meshFilters[i].gameObject.SetActive(false);
